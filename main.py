@@ -9,13 +9,21 @@ app = FastAPI()
 with open("./questions.json", "r") as f:
     questions = json.loads(f.read())
 
+valid_levels = ["easy", "medium", "hard"]
+
 @app.get("/api")
-def api():
-    return questions
+def api(level : Optional[str] = None, limit : Optional[int] = None):
+    if not level:
+        return questions
+
+    if level.lower() not in valid_levels:
+        return { "Error": "Enter a valid level!", "Valid Levels": ["easy", "medium", "hard"]}
+
+    filter_method = lambda list: list["level"] == level.upper()
+    return list(filter(filter_method, questions))[0 : limit]
 
 @app.get("/api/random")
 def random_question(level : Optional[str] = None):
-    valid_levels = ["easy", "medium", "hard"]
 
     while True:
         question = randomquestion()
