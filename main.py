@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from typing import Optional
 from random_question import randomquestion
-import random
 import json
 
 app = FastAPI()
@@ -24,7 +23,6 @@ def api(level : Optional[str] = None, limit : Optional[int] = None):
 
 @app.get("/api/random")
 def random_question(level : Optional[str] = None):
-
     while True:
         question = randomquestion()
 
