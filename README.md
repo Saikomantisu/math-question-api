@@ -1,15 +1,31 @@
 # Math Question API
 
+### How to install
+
+```
+git clone https://github.com/Saikomantisu/math-question-api.git
+
+pip install fastapi
+
+pip install uvicorn
+```
+
+#### Run
+
+ ```uvicorn main:app --reload```
+ 
+ ---
+ 
 ### Endpoints
 `/api` - Get all the questions
 
-| Key | Value | Description |
+| Key | Description | Data Type
 | ----------- | ----------- | ----------- |
-| `level` | ["easy", "medium", "hard"] | Get question based on the level
-| `limit` | 1 - 3550 | Limit the question array
+| `level` | Get question based on the level - ["easy", "medium", "hard"] | `String`
+| `limit` | Limit the question array | `Intiger`
 
 `/api/random` - Get a random question
 
-| Key | Value | Description |
+| Key | Description | Data Type
 | ----------- | ----------- | ----------- |
-| `level` | ["easy", "medium", "hard"] | Get question based on the level
+| `level` | Get question based on the level - ["easy", "medium", "hard"] | `String`
